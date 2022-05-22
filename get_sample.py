@@ -3,11 +3,13 @@ import sys
 import random
 from pyspark import SparkContext
 
+N = 10
+
 def main(files):
     sc = SparkContext()
     final = []
     for f in files:
-        percent = random.random()/50
+        percent = random.random()/N
 
         sample = sc.textFile(f)
         count = sample.count()

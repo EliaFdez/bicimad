@@ -33,10 +33,7 @@ def flujo_diario(rdd):
         .map(lambda x: (x[0][0], (x[0][1], x[1])))\
         .groupByKey()\
         .map(lambda x: (x[0], list(x[1])))
-    # aux = sorted(rdd_final.collect())
-    # for i in aux:
-    #     print(i)
-    #     print('\n\n')
+        
     return rdd_final
 
 def flujo(rdd_date):
@@ -84,12 +81,10 @@ def plot_day(date, data):
         estaciones.append(str(d[0]))
         flujos.append(d[1])
 
-    print(len(estaciones))
-
     plt.bar(estaciones, flujos)
     plt.axhline(y=0, color='black')
     plt.xlabel('estaciones')
-    plt.xticks(estaciones, estaciones)
+    plt.xticks(estaciones, estaciones, fontsize=8, rotation=90)
     plt.ylabel('flujo')
     plt.title(date)
     plt.show()
